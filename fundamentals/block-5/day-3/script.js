@@ -22,22 +22,35 @@ function createDaysOfTheWeek() {
 createDaysOfTheWeek();
 
 // Escreva seu código abaixo.
-let decemberDays = [];
+let decemberDayNumbers = [];
 
 for (let i = -1; i <= 31; i += 1) {
   if (i <= 0) {
-    decemberDays.push(i + 30);
+    decemberDayNumbers.push(i + 30);
   } else {
-    decemberDays.push(i);
+    decemberDayNumbers.push(i);
   }
 }
 
-const daysNumberList = document.querySelector('#days');
+const dayNumbersList = document.querySelector('#days');
 
-for (let i = 0; i < decemberDays.length; i += 1) {
-  let dayNumber = decemberDays[i];
-  let dayNumberListItem = document.createElement('li');
-  dayNumberListItem.innerText = dayNumber;
+function createDayNumbers(dayNumbers) {
+  for (let i = 0; i < dayNumbers.length; i += 1) {
+    let dayNumber = dayNumbers[i];
+    let dayNumberListItem = document.createElement('li');
+    dayNumberListItem.innerText = dayNumber;
+    dayNumberListItem.className = 'day'
 
-  daysNumberList.appendChild(dayNumberListItem);
+    if (dayNumber === 24 || dayNumber === 25 || dayNumber === 31) {
+      dayNumberListItem.className += ' holiday';
+    }
+
+    if ((dayNumber - 4) % 7 === 0 || dayNumber - 4 === 0) {
+      dayNumberListItem.className += ' friday';
+    }
+
+    dayNumbersList.appendChild(dayNumberListItem);
+  }
 }
+
+createDayNumbers(decemberDayNumbers);
