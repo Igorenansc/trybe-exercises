@@ -32,6 +32,19 @@ for (let i = -1; i <= 31; i += 1) {
   }
 }
 
+function cte(obj) {
+  // console.log(obj.tag, obj.classes, obj.text);
+  if (!!obj.tag) tag = 'div';
+  let createdElement = document.createElement(obj.tag);
+  // if (obj.tag === "img") createdElement.src = obj.src;
+
+  if (!!obj.id) createdElement.id = obj.id;
+  if (!!obj.classes) createdElement.className = obj.classes;
+  if (!!obj.text) createdElement.innerText = obj.text;
+
+  return createdElement;
+}
+
 const dayNumbersList = document.querySelector('#days');
 
 function createDayNumbers(dayNumbers) {
@@ -39,7 +52,7 @@ function createDayNumbers(dayNumbers) {
     let dayNumber = dayNumbers[i];
     let dayNumberListItem = document.createElement('li');
     dayNumberListItem.innerText = dayNumber;
-    dayNumberListItem.className = 'day'
+    dayNumberListItem.className = 'day';
 
     if (dayNumber === 24 || dayNumber === 25 || dayNumber === 31) {
       dayNumberListItem.className += ' holiday';
@@ -54,3 +67,9 @@ function createDayNumbers(dayNumbers) {
 }
 
 createDayNumbers(decemberDayNumbers);
+
+document
+  .querySelector('.buttons-container')
+  .appendChild(
+    cte({ tag: 'button', classes: 'btn-holiday', text: 'Feriados' })
+  );
