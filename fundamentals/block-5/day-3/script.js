@@ -70,6 +70,23 @@ createDayNumbers(decemberDayNumbers);
 
 document
   .querySelector('.buttons-container')
-  .appendChild(
-    cte({ tag: 'button', classes: 'btn-holiday', text: 'Feriados' })
-  );
+  .appendChild(cte({ tag: 'button', id: 'btn-holiday', text: 'Feriados' }));
+
+function changeHolidayColor() {
+  let holidays = document.querySelectorAll('.holiday');
+  let defaultBG = 'rgb(238,238,238)';
+
+  if (localStorage.holidayToggle !== 'true') {
+    localStorage.holidayToggle = true;
+    defaultBG = 'rgb(0,128,0)';
+  } else {
+    localStorage.holidayToggle = false;
+  }
+
+  for (let i = 0; i < holidays.length; i += 1) {
+    holidays[i].style.backgroundColor = defaultBG;
+  }
+}
+
+let holidayButton = document.querySelector('#btn-holiday');
+holidayButton.addEventListener('click', changeHolidayColor);
