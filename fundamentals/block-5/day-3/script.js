@@ -119,3 +119,22 @@ holidayButton.addEventListener('click', toggleHolidayColor);
 
 let fridayButton = document.querySelector('#btn-friday');
 fridayButton.addEventListener('click', toggleFridaysText);
+
+function dayZoomIn(event) {
+  if(!!event.target.className) {
+    // console.log(`day ${event.target.innerText} altered`);
+    event.target.style.fontSize = 'xx-large'
+    // event.target.style.fontWeight = 'bold'
+  }
+}
+function dayZoomOut(event) {
+  if(!!event.target.className) {
+    // console.log(`day ${event.target.innerText} back to normal`);
+    event.target.style.fontSize = '';
+    // event.target.style.fontWeight = '400';
+  }
+}
+
+dayNumbersList.addEventListener('mouseover', dayZoomIn);
+dayNumbersList.addEventListener('mouseout', dayZoomOut);
+

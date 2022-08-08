@@ -34,6 +34,7 @@ button {
   text-align: center;
   vertical-align: middle;
   width: 13.6%;
+  min-height: 45px;
 }
 
 .input-container {
